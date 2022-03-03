@@ -7,12 +7,13 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import java.io.Serializable;
 import java.util.Date;
 
 @MappedSuperclass
 @Getter
 @Setter
-public class BaseEntity {
+public class BaseEntity implements Serializable {
     @Id
     private Long id;
 
