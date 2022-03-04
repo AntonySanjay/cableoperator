@@ -1,4 +1,4 @@
-package com.sanjay.ucs001.cableoperator.user;
+package com.sanjay.ucs001.cableoperator.operator;
 
 
 import com.sanjay.ucs001.cableoperator.common.BaseEntity;
@@ -13,15 +13,12 @@ import javax.persistence.Entity;
 @Setter
 @NoArgsConstructor
 @Entity
-public class User extends BaseEntity {
+public class Operator extends BaseEntity {
     @Column(nullable = false)
     private String username;
 
     @Column(nullable = false)
     private String password;
-
-    @Column(nullable = false)
-    private String address;
 
     @Column(nullable = false)
     private String role;

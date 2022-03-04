@@ -1,7 +1,7 @@
 package com.sanjay.ucs001.cableoperator.auth;
 
-import com.sanjay.ucs001.cableoperator.user.User;
-import com.sanjay.ucs001.cableoperator.user.UserService;
+import com.sanjay.ucs001.cableoperator.operator.Operator;
+import com.sanjay.ucs001.cableoperator.operator.OperatorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -13,14 +13,14 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
 
-    private final UserService userService;
+    private final OperatorService userService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> user = this.userService.findByUsername(username);
-        if (user.isEmpty()) {
+        Optional<Operator> operator = this.userService.findByUsername(username);
+        if (operator.isEmpty()) {
             throw new UsernameNotFoundException("User not found");
         }
-        return new UserDetailsImpl(user.get());
+        return new UserDetailsImpl(operator.get());
     }
 }

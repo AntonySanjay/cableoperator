@@ -1,6 +1,6 @@
 package com.sanjay.ucs001.cableoperator.auth;
 
-import com.sanjay.ucs001.cableoperator.user.User;
+import com.sanjay.ucs001.cableoperator.operator.Operator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -12,7 +12,7 @@ import java.util.Collections;
 @RequiredArgsConstructor
 public class UserDetailsImpl implements UserDetails {
 
-    private final User user;
+    private final Operator user;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
