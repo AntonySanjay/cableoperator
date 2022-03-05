@@ -1,6 +1,7 @@
 package com.sanjay.ucs001.cableoperator.plan;
 
 import com.sanjay.ucs001.cableoperator.common.BaseEntity;
+import com.sanjay.ucs001.cableoperator.plan.dto.CreatePlanRequest;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -22,10 +23,16 @@ public class Plan extends BaseEntity {
     private String name;
 
     @Column(nullable = false)
-    private int planPrice;
+    private int price;
 
     @Column(nullable = false)
     private String features;
+
+    public Plan(CreatePlanRequest plan) {
+        this.name = plan.getName();
+        this.price = plan.getPlanPrice();
+        this.features = plan.getFeatures();
+    }
 
     @Override
     public boolean equals(Object o) {

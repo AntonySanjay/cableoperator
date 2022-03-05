@@ -6,7 +6,7 @@
 </head>
 <body>
 <form method="post" style="display: flex; flex-direction: column"
-      th:action="@{/operator/customer/update/{id}(id=${id})}"
+      th:action="@{/update/{id}(id=${id})}"
       th:object="${customer}">
     <label>firstName
         <input id="firstName" th:field="*{firstName}" type="text">

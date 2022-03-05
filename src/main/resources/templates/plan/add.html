@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add plan</title>
+</head>
+<body>
+<form method="post" style="display: flex; flex-direction: column" th:action="@{/operator/plan/add}"
+      th:object="${plan}">
+    <label>Name
+        <input id="firstName" th:field="*{name}" type="text">
+    </label>
+    <label>Price
+        <input id="lastName" th:field="*{price}" type="number">
+    </label>
+    <label>Features
+        <input id="features" th:field="*{features}" type="text">
+    </label>
+    <button>Add User</button>
+</form>
+</body>
+</html>

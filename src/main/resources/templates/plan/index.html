@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Plan</title>
+</head>
+<body>
+
+<h1>
+    <a th:href="@{plan/add}">Create Plan</a>
+</h1>
+
+<div th:each="plan : ${plans}">
+    <span>
+    <h1 th:text="${plan.name}">Customer name</h1>
+    <a th:href="@{delete/{id}(id=${plan.id})}">Delete Plan</a>
+        <a th:href="@{update/{id}(id=${plan.id})}">Update Plan</a>
+    </span>
+</div>
+
+</body>
+</html>

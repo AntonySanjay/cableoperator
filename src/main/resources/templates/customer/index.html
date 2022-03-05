@@ -13,11 +13,9 @@
 <div th:each="customer : ${customers}">
     <span>
     <h1 th:text="${customer.firstName}">Customer name</h1>
-    <a th:href="@{customer/delete/{id}(id=${customer.id})}">Delete Customer</a>
-        <a th:href="@{customer/update/{id}(id=${customer.id})}">Update Customer</a>
+    <a th:href="@{/delete/{id}(id=${customer.id})}">Delete Customer</a>
+        <a th:href="@{/update/{id}(id=${customer.id})}">Update Customer</a>
     </span>
-
-
 </div>
 </body>
 </html>
