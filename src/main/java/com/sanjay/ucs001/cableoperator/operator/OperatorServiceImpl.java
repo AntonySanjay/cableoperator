@@ -8,10 +8,10 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class OperatorServiceImpl implements OperatorService {
-    private final OperatorRepository userRepository;
+    private final OperatorRepository operatorRepository;
 
     @Override
     public Optional<Operator> findByUsername(String username) {
-        return this.userRepository.findByUsername(username);
+        return this.operatorRepository.findByUsername(username);
     }
 }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Customer</title>
+</head>
+<body>
+<form method="post" style="display: flex; flex-direction: column" th:action="@{/operator/customer/add}"
+      th:object="${customer}">
+    <label>firstName
+        <input id="firstName" th:field="*{firstName}" type="text">
+    </label>
+    <label>lastName
+        <input id="lastName" th:field="*{lastName}" type="text">
+    </label>
+    <label>subID
+        <input id="subscriptionId" readonly th:field="*{subscriptionId}" type="text">
+    </label>
+    <label>contactNumber
+        <input id="contactNumber" th:field="*{contactNumber}" type="text">
+    </label>
+    <label>contactAddress
+        <input id="contactAddress" th:field="*{contactAddress}" type="text">
+    </label>
+    <label>email
+        <input id="email" th:field="*{email}" type="text">
+    </label>
+    <button>Add User</button>
+</form>
+</body>
+</html>
