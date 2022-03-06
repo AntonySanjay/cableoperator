@@ -1,6 +1,7 @@
 package com.sanjay.ucs001.cableoperator.plan;
 
 import com.sanjay.ucs001.cableoperator.plan.dto.CreatePlanRequest;
+import com.sanjay.ucs001.cableoperator.plan.models.Plan;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

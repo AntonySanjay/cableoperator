@@ -1,4 +1,4 @@
-package com.sanjay.ucs001.cableoperator.plan;
+package com.sanjay.ucs001.cableoperator.plan.models;
 
 import com.sanjay.ucs001.cableoperator.common.BaseEntity;
 import com.sanjay.ucs001.cableoperator.plan.dto.CreatePlanRequest;
@@ -10,6 +10,9 @@ import org.hibernate.Hibernate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -25,13 +28,20 @@ public class Plan extends BaseEntity {
     @Column(nullable = false)
     private int price;
 
-    @Column(nullable = false)
-    private String features;
+    @OneToMany(
+            orphanRemoval = true,
+            mappedBy = "plan"
+    )
+    private List<Feature> features = new ArrayList<>();
 
     public Plan(CreatePlanRequest plan) {
         this.name = plan.getName();
         this.price = plan.getPlanPrice();
-        this.features = plan.getFeatures();
+    }
+
+    public void addFeature(Feature feature) {
+        this.features.add(feature);
+        feature.setPlan(this);
     }
 
     @Override
