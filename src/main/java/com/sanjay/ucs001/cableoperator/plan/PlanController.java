@@ -25,25 +25,25 @@ public class PlanController {
     }
 
     @GetMapping("/add")
-    public String addCustomer(Model model) {
+    public String addPlan(Model model) {
         model.addAttribute("plan", new Plan());
         return "plan/add";
     }
 
     @PostMapping("/add")
-    public String addCustomer(CreatePlanRequest plan) {
+    public String addPlan(CreatePlanRequest plan) {
         this.planService.createPlan(plan);
         return "redirect:/operator/plan/";
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteCustomer(@PathVariable("id") Long id) {
+    public String deletePlan(@PathVariable("id") Long id) {
         this.planService.deletePlan(id);
         return "redirect:/operator/plan";
     }
 
     @GetMapping("/update/{id}")
-    public String updateCustomer(@PathVariable Long id, Model model) {
+    public String updatePlan(@PathVariable Long id, Model model) {
         Optional<Plan> plan = this.planService.findPlan(id);
         if (plan.isEmpty()) {
             return "redirect:/operator/plan";
@@ -56,7 +56,7 @@ public class PlanController {
     }
 
     @PostMapping("/update/{id}")
-    public String updateCustomer(@PathVariable("id") Long id, CreatePlanRequest plan) {
+    public String updatePlan(@PathVariable("id") Long id, CreatePlanRequest plan) {
         this.planService.updatePlan(id, plan);
         return "redirect:/operator/plan/update/" + id;
     }

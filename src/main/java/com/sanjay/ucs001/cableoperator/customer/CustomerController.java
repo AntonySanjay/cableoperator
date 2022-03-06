@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("operator/customer")
+@RequestMapping("/operator/customer")
 @RequiredArgsConstructor
 @Slf4j
 public class CustomerController {

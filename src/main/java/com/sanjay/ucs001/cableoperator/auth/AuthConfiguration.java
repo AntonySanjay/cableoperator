@@ -26,6 +26,7 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/login", "/register").permitAll()
+                .antMatchers("/css/**").permitAll()
                 .anyRequest().hasRole("OPERATOR")
                 .and()
                 .logout()

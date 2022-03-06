@@ -5,7 +5,7 @@
     <title>Add Customer</title>
 </head>
 <body>
-<form method="post" style="display: flex; flex-direction: column" th:action="@{/add}"
+<form method="post" style="display: flex; flex-direction: column" th:action="@{/operator/customer/add}"
       th:object="${customer}">
     <label>firstName
         <input id="firstName" th:field="*{firstName}" type="text">
