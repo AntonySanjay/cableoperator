@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class OperatorController {
 
     @GetMapping("/operator")
-    public String admin() {
+    public String operator() {
         return "operator";
     }
 }
