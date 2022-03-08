@@ -23,6 +23,14 @@
     <label>contactAddress
         <input id="contactAddress" th:field="*{contactAddress}" type="text">
     </label>
+    <label>
+        Plan
+        <select th:field="*{plan}">
+            <option th:each="p : ${allPlans}" th:selected="${p.getId() == customer?.plan?.id}" th:text="${p.getName()}"
+                    th:value="${p.getId()}">Sample
+            </option>
+        </select>
+    </label>
     <label>email
         <input id="email" th:field="*{email}" type="text">
     </label>

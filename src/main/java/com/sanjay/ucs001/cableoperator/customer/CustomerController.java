@@ -3,7 +3,6 @@ package com.sanjay.ucs001.cableoperator.customer;
 
 import com.sanjay.ucs001.cableoperator.customer.dto.CreateCustomer;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +15,6 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/operator/customer")
 @RequiredArgsConstructor
-@Slf4j
 public class CustomerController {
 
     private final CustomerService customerService;
@@ -31,6 +29,7 @@ public class CustomerController {
     public String addCustomer(Model model) {
         Customer customer = this.customerService.getCustomerWithSubID();
         model.addAttribute("customer", customer);
+        model.addAttribute("plan", this.customerService.getAllPlans());
         return "customer/add";
     }
 
@@ -55,6 +54,7 @@ public class CustomerController {
 
         model.addAttribute("customer", customer.get());
         model.addAttribute("id", id);
+        model.addAttribute("allPlans", this.customerService.getAllPlans());
 
         return "customer/update";
     }

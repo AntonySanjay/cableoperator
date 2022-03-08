@@ -2,6 +2,7 @@ package com.sanjay.ucs001.cableoperator.customer;
 
 import com.sanjay.ucs001.cableoperator.common.BaseEntity;
 import com.sanjay.ucs001.cableoperator.customer.dto.CreateCustomer;
+import com.sanjay.ucs001.cableoperator.plan.Plan;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,6 +11,8 @@ import org.hibernate.Hibernate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.util.Objects;
 
 @Entity
@@ -37,6 +40,12 @@ public class Customer extends BaseEntity {
     @Column(nullable = false)
     private String email;
 
+    @ManyToOne
+    @JoinColumn(
+            name = "plan_id"
+    )
+    private Plan plan;
+
     public Customer(CreateCustomer customer) {
         this.firstName = customer.getFirstName();
         this.lastName = customer.getLastName();
@@ -44,6 +53,7 @@ public class Customer extends BaseEntity {
         this.contactAddress = customer.getContactAddress();
         this.contactNumber = customer.getContactNumber();
         this.email = customer.getEmail();
+        this.plan = customer.getPlan();
     }
 
 

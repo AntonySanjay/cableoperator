@@ -1,12 +1,15 @@
 package com.sanjay.ucs001.cableoperator.customer;
 
 import com.sanjay.ucs001.cableoperator.customer.dto.CreateCustomer;
+import com.sanjay.ucs001.cableoperator.plan.Plan;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface CustomerService {
     List<Customer> findAllCustomers();
+
+    List<Plan> getAllPlans();
 
     Optional<Customer> findOneById(Long id);
 

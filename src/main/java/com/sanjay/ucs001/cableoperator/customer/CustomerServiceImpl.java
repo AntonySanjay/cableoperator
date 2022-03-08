@@ -2,6 +2,8 @@ package com.sanjay.ucs001.cableoperator.customer;
 
 import com.sanjay.ucs001.cableoperator.customer.dto.CreateCustomer;
 import com.sanjay.ucs001.cableoperator.customer.exceptions.CustomerNotFoundException;
+import com.sanjay.ucs001.cableoperator.plan.Plan;
+import com.sanjay.ucs001.cableoperator.plan.PlanRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,10 +18,16 @@ import java.util.Random;
 public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
+    private final PlanRepository planRepository;
 
     @Override
     public List<Customer> findAllCustomers() {
         return customerRepository.findAll();
+    }
+
+    @Override
+    public List<Plan> getAllPlans() {
+        return this.planRepository.findAll();
     }
 
     @Override
