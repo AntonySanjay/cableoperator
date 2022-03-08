@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Recharge</title>
+</head>
+<body>
+
+<form method="post" th:action="${'/customer/' + id + '/recharge'}" th:object="${model}">
+    <input placeholder="card number" th:field="*{cardNumber}" type="number"/>
+    <input placeholder="expiry date" type="date"/>
+    <input max="999" min="100" type="number"/>
+    <button>Recharge</button>
+</form>
+
+</body>
+</html>

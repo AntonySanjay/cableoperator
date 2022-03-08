@@ -21,5 +21,7 @@ public interface CustomerService {
 
     void updateCustomer(Long id, CreateCustomer customer);
 
+    void increaseExpiryDateOneMonth(String subscriptionId);
+
     Customer getCustomerWithSubID();
 }

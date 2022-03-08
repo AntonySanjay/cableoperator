@@ -8,5 +8,12 @@
 
 <h1 th:text="${customer.getFirstName()}"></h1>
 
+<span style="display: flex; gap: 1em">
+<h1>Expires At</h1>
+    <h1 th:text="${customer.planExpiresAt}">12/08/2001</h1>
+</span>
+
+<a th:href="${'/customer/' + customer.subscriptionId + '/recharge'}">Recharge</a>
+
 </body>
 </html>

@@ -63,6 +63,14 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public void increaseExpiryDateOneMonth(String subscriptionId) {
+        Customer customer = this.customerRepository.findBySubscriptionId(subscriptionId)
+                .orElseThrow(() -> new CustomerNotFoundException("Customer with the given subscription ID not found"));
+        customer.setPlanExpiresAt(LocalDate.now().plusMonths(1));
+        this.customerRepository.save(customer);
+    }
+
+    @Override
     public Customer getCustomerWithSubID() {
         Customer customer = new Customer();
         try {
