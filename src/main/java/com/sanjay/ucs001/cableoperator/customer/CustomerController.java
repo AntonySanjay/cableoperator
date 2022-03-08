@@ -63,4 +63,26 @@ public class CustomerController {
         return "redirect:/operator/customer/update/" + id;
     }
 
+    @GetMapping("/customer/{id}")
+    public String customerPlan(@PathVariable("id") String id, Model model) {
+        Optional<Customer> customer = this.customerService.findBySubId(id);
+
+        if (customer.isEmpty()) {
+            return "redirect:/404";
+        }
+        model.addAttribute("customer", customer.get());
+
+        return "customer/plan/detail";
+    }
+
+    @GetMapping("/customer")
+    public String getCustomerPlan() {
+        return "customer/plan/index";
+    }
+
+    @PostMapping("/customer")
+    public String getCustomerPlan(String id) {
+        return "redirect:/customer/" + id;
+    }
+
 }

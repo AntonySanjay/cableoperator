@@ -13,6 +13,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -45,6 +46,8 @@ public class Customer extends BaseEntity {
             name = "plan_id"
     )
     private Plan plan;
+
+    private LocalDate planExpiresAt;
 
     public Customer(CreateCustomer customer) {
         this.firstName = customer.getFirstName();

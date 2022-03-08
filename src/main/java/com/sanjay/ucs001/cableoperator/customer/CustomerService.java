@@ -11,6 +11,8 @@ public interface CustomerService {
 
     List<Plan> getAllPlans();
 
+    Optional<Customer> findBySubId(String subId);
+
     Optional<Customer> findOneById(Long id);
 
     Customer createCustomer(CreateCustomer customer);

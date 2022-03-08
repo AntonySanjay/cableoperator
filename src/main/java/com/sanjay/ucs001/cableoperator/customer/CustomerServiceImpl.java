@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -31,6 +32,11 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public Optional<Customer> findBySubId(String subId) {
+        return this.customerRepository.findBySubscriptionId(subId);
+    }
+
+    @Override
     public Optional<Customer> findOneById(Long id) {
         return this.customerRepository.findById(id);
     }
@@ -38,6 +44,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer createCustomer(CreateCustomer createCustomer) {
         Customer customer = new Customer(createCustomer);
+        customer.setPlanExpiresAt(LocalDate.now().plusMonths(1));
         return this.customerRepository.save(customer);
     }
 
