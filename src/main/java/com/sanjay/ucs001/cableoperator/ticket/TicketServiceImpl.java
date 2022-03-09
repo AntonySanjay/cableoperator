@@ -2,6 +2,7 @@ package com.sanjay.ucs001.cableoperator.ticket;
 
 import com.sanjay.ucs001.cableoperator.ticket.dto.CreateTicketRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +16,11 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public List<Ticket> findAllTickets() {
-        return this.ticketRepository.findAll();
+        return this.ticketRepository.findAll(
+                Sort.by(Sort.Direction.DESC, "IsOpen")
+                        .and(
+                                Sort.by(Sort.Direction.DESC, "CreatedAt")
+                        ));
     }
 
     @Override
