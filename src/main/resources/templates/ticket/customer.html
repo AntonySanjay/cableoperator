@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Ticket</title>
+</head>
+<body>
+
+<form method="post" th:action="@{'/customer/' + ${userId} + '/help'}" th:object="${ticket}">
+    <input id="subscriptionId" name="subscriptionId" th:value="${userId}" type="hidden"/>
+    <input th:field="*{title}" type="text">
+    <input th:field="*{message}" type="text">
+    <button>Add ticket</button>
+</form>
+
+</body>
+</html>

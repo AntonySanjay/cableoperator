@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${ticket.title}">Ticket Details</title>
+</head>
+<body>
+
+<h1 th:text="${ticket.title}">Ticket Title</h1>
+<p th:text="${ticket.message}">This is the message</p>
+<p th:text="${ticket.isOpen}">Status</p>
+<a th:href="@{'/operator/ticket/' + ${ticket.id} + '/done'}">Mark as done</a>
+
+</body>
+</html>
