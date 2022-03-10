@@ -11,7 +11,7 @@ import java.util.Arrays;
 @Component
 public class LuhnAlgorithm {
 
-    public Boolean validCard(Long card) {
+    public Boolean isCardValid(Long card) {
         String cardString = getCardString(card);
         int length = cardString.length();
 

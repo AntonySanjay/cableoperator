@@ -1,0 +1,27 @@
+<nav class="nav" th:fragment="nav">
+    <div>
+        <div class="nav__user">
+            <p>Company Name</p>
+        </div>
+        <div class="nav__items">
+            <a class="nav-active" th:href="@{/operator/customer}">
+                <i class="fa-solid fa-user fa-lg nav__icon"></i>
+                <p class="nav__icon-title">Customer</p>
+            </a>
+            <a th:href="@{/operator/plan}">
+                <i class="fa-solid fa-box-archive fa-lg nav__icon"></i>
+                <p class="nav__icon-title">Plan</p>
+            </a>
+            <a th:href="@{/operator/ticket}">
+                <i class="fa-solid fa-ticket-simple nav__icon"></i>
+                <p class="nav__icon-title">Tickets</p>
+            </a>
+        </div>
+    </div>
+    <div class="nav__items nav__items--logout">
+        <a href="#">
+            <i class="fa-solid fa-arrow-right-from-bracket nav__icon"></i>
+            <p class="nav__icon-title">Logout</p>
+        </a>
+    </div>
+</nav>

@@ -5,7 +5,6 @@ import com.sanjay.ucs001.cableoperator.common.LuhnAlgorithm;
 import com.sanjay.ucs001.cableoperator.customer.dto.CreateCustomer;
 import com.sanjay.ucs001.cableoperator.customer.dto.RechargeCardRequest;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +15,6 @@ import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
-@Slf4j
 public class CustomerController {
 
     private final CustomerService customerService;
@@ -110,8 +108,8 @@ public class CustomerController {
 
     @PostMapping("/customer/{id}/recharge")
     public String customerRecharge(@PathVariable("id") String id, RechargeCardRequest request) {
-        boolean valid = this.luhnAlgorithm.validCard(request.getCardNumber());
-        if (!valid) {
+        boolean isValid = this.luhnAlgorithm.isCardValid(request.getCardNumber());
+        if (!isValid) {
             return "redirect:/customer/invalid-transaction/";
         }
 

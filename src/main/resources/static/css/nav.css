@@ -1,0 +1,71 @@
+.nav {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 10px;
+}
+
+.nav__user {
+    margin-bottom: 20px;
+}
+
+.nav__items > a {
+    display: flex;
+    align-items: center;
+    padding: 14px;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.nav__icon {
+    color: #667085;
+}
+
+.nav__icon-title {
+    color: #667085;
+}
+
+.nav__items > a:hover {
+    border-radius: var(--rounded-sm);
+    background-color: #f2f4f7;
+}
+
+.nav__items > a:hover .nav__icon {
+    color: #000;
+}
+
+.nav__items > a:hover .nav__icon-title {
+    color: #000;
+}
+
+.nav-active {
+    border-radius: var(--rounded-sm);
+
+    color: #000;
+    background-color: #f2f4f7;
+}
+
+.nav-active .nav__icon-title {
+    color: #000;
+}
+
+.nav-active .nav__icon {
+    color: #000;
+}
+
+.nav__items--logout > a:hover {
+    background-color: rgb(255, 206, 206);
+}
+
+.nav__items--logout > a:hover .nav__icon {
+    color: rgb(255, 46, 46);
+}
+
+.nav__items--logout > a:hover .nav__icon-title {
+    color: rgb(255, 46, 46);
+}
