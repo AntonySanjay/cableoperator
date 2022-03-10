@@ -13,4 +13,6 @@ public interface TicketService {
     Optional<Ticket> findTicketById(Long id);
 
     void markTicketAsDone(Ticket ticket);
+
+    Long openTicketCount();
 }

@@ -6,10 +6,8 @@
 <nav th:replace="fragments/nav :: nav"></nav>
 
 <div class="content">
-    <h1>This is the me protected admin page</h1>
-    <a href="/operator/customer">Customer</a>
-    <a href="/operator/plan">Plan</a>
-    <a href="/operator/ticket">Tickets</a>
+    <h1 th:text="|you have ${customerCount} customer|"></h1>
+    <h1 th:text="|you have ${ticketCount} tickets open|"></h1>
 </div>
 
 </body>

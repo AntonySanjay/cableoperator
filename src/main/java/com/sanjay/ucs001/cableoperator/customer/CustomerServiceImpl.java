@@ -42,10 +42,10 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer createCustomer(CreateCustomer createCustomer) {
+    public void createCustomer(CreateCustomer createCustomer) {
         Customer customer = new Customer(createCustomer);
         customer.setPlanExpiresAt(LocalDate.now().plusMonths(1));
-        return this.customerRepository.save(customer);
+        this.customerRepository.save(customer);
     }
 
     @Override
@@ -79,6 +79,11 @@ public class CustomerServiceImpl implements CustomerService {
             e.printStackTrace();
         }
         return customer;
+    }
+
+    @Override
+    public Long customerCount() {
+        return this.customerRepository.count();
     }
 
 

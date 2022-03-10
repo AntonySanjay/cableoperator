@@ -40,4 +40,9 @@ public class TicketServiceImpl implements TicketService {
         this.ticketRepository.save(ticket);
     }
 
+    @Override
+    public Long openTicketCount() {
+        return this.ticketRepository.countByIsOpenTrue();
+    }
+
 }

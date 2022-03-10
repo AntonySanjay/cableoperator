@@ -15,7 +15,7 @@ public interface CustomerService {
 
     Optional<Customer> findOneById(Long id);
 
-    Customer createCustomer(CreateCustomer customer);
+    void createCustomer(CreateCustomer customer);
 
     void deleteCustomer(Long id);
 
@@ -24,4 +24,6 @@ public interface CustomerService {
     void increaseExpiryDateOneMonth(String subscriptionId);
 
     Customer getCustomerWithSubID();
+
+    Long customerCount();
 }
