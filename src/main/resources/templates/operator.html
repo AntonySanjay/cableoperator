@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="fragments/head :: head"></head>
+<head>
+    <div th:replace="fragments/head :: head"></div>
+    <title>Welcome Operator</title>
+</head>
 <body>
 
 <nav th:replace="fragments/nav :: nav"></nav>

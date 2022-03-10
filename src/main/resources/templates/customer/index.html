@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <div th:replace="fragments/head :: head"></div>
     <title>Customers</title>
 </head>
 <body>
 
-<h1>
-    <a th:href="@{/operator/customer/add}">Create Customer</a>
-</h1>
+<nav th:replace="fragments/nav :: nav"></nav>
 
-<div th:each="customer : ${customers}">
+<div class="content">
+    <h1>
+        <a th:href="@{/operator/customer/add}">Create Customer</a>
+    </h1>
+
+    <div th:each="customer : ${customers}">
     <span>
     <h1 th:text="${customer.firstName}">Customer name</h1>
     <a th:href="@{/operator/customer/delete/{id}(id=${customer.id})}">Delete Customer</a>
         <a th:href="@{/operator/customer/update/{id}(id=${customer.id})}">Update Customer</a>
     </span>
+    </div>
 </div>
 </body>
 </html>
