@@ -2,6 +2,7 @@ package com.sanjay.ucs001.cableoperator.customer;
 
 
 import com.sanjay.ucs001.cableoperator.common.LuhnAlgorithm;
+import com.sanjay.ucs001.cableoperator.common.Utils;
 import com.sanjay.ucs001.cableoperator.customer.dto.CreateCustomer;
 import com.sanjay.ucs001.cableoperator.customer.dto.RechargeCardRequest;
 import lombok.RequiredArgsConstructor;
@@ -19,10 +20,12 @@ public class CustomerController {
 
     private final CustomerService customerService;
     private final LuhnAlgorithm luhnAlgorithm;
+    private final Utils utils;
 
     @GetMapping("/operator/customer")
     public String allCustomers(Model model) {
         model.addAttribute("customers", this.customerService.findAllCustomers());
+        model.addAttribute("utils", utils);
         return "customer/index";
     }
 

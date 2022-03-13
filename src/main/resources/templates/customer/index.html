@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <div th:replace="fragments/head :: head"></div>
+    <link rel="stylesheet" th:href="@{/css/customer.css}"/>
     <title>Customers</title>
 </head>
 <body>
@@ -9,17 +10,61 @@
 <nav th:replace="fragments/nav :: nav"></nav>
 
 <div class="content">
-    <h1>
-        <a th:href="@{/operator/customer/add}">Create Customer</a>
-    </h1>
 
-    <div th:each="customer : ${customers}">
-    <span>
-    <h1 th:text="${customer.firstName}">Customer name</h1>
-    <a th:href="@{/operator/customer/delete/{id}(id=${customer.id})}">Delete Customer</a>
-        <a th:href="@{/operator/customer/update/{id}(id=${customer.id})}">Update Customer</a>
-    </span>
+    <div>
+        <h1>All customers</h1>
     </div>
+
+    <div>
+        <a th:href="@{/operator/customer/add}">Add customer</a>
+    </div>
+
+    <table class="customer__table">
+        <thead>
+        <tr>
+            <th class="customer__heading">First Name</th>
+            <th class="customer__heading">Last Name</th>
+            <th class="customer__heading">Plan</th>
+            <th class="customer__heading">Subscription id</th>
+            <th class="customer__heading">Expiry Status</th>
+            <th class="customer__heading">contact number</th>
+            <th class="customer__heading">contact address</th>
+            <th class="customer__heading">options</th>
+        </tr>
+        </thead>
+        <tbody class="customer__body">
+        <tr th:each="customer: ${customers}">
+            <td th:text="${customer.firstName}">Elon</td>
+            <td th:text="${customer.lastName}">Musk</td>
+            <td th:text="${customer.plan.name}">SD plan</td>
+            <td th:text="${customer.contactNumber}">123123</td>
+            <td th:with="daysLeft=${utils.getDaysLeft(customer.planExpiresAt)}">
+                <p
+                        class="customer_paid-tag"
+                        th:classappend="${daysLeft > 15 ? 'customer_paid-tag--paid' : ((daysLeft > 3) ? 'customer_paid-tag--due' : 'customer_paid-tag--not-paid' )}"
+                        th:text="
+                        ${daysLeft} + ' ' +
+                        ${daysLeft < 2 ? 'day left': 'days left'}
+                "
+                >
+                    30 days left
+                </p>
+            </td>
+            <td th:text="${customer.contactNumber}">99999999999</td>
+            <td th:utext="${customer.contactAddress.replaceAll(',', ',<br />')}">asgsagd,sagdadgdsag,s</td>
+            <td>
+                <div class="customer__options">
+                    <a th:href="@{'/operator/customer/update/' + ${customer.id}}">
+                        <i class="fa-solid fa-pencil customer__icon--pencil"></i>
+                    </a>
+                    <a th:href="@{'/operator/customer/delete/' + ${customer.id}}">
+                        <i class="fa-solid fa-trash customer__icon--trash"></i>
+                    </a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>
