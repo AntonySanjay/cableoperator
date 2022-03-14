@@ -36,7 +36,10 @@ input,
 a,
 tr,
 td,
-th {
+th,
+label,
+textarea,
+select {
     font-family: "Montserrat", sans-serif;
     font-size: 1rem;
 }
@@ -78,4 +81,25 @@ a {
     display: grid;
     place-content: center;
     margin-left: 310px;
+    margin-right: 20px;
+}
+
+.form-with-label {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.error-message {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+}
+
+.input--is-danger {
+    border-color: var(--danger);
+}
+
+.input--is-danger:focus, .input--is-danger:hover {
+    border-color: var(--danger);
+    box-shadow: 0 0 0 0.175em var(--danger-light);
 }

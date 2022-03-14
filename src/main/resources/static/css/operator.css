@@ -1,0 +1,20 @@
+.operator__content {
+    display: block;
+}
+
+.operator__heading {
+    margin-bottom: 1rem;
+}
+
+.operator__heading > h1 {
+    font-size: 2.2rem;
+}
+
+.operator__card-container {
+    display: flex;
+    gap: 20px;
+}
+
+.card {
+    display: flex;
+}
