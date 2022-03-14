@@ -58,14 +58,28 @@
     color: #000;
 }
 
-.nav__items--logout > a:hover {
+.nav__items--logout button {
+    border: none;
+    background: transparent;
+    width: 100%;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: var(--rounded-sm);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    color: #667085;
+}
+
+.nav__items--logout button:hover {
     background-color: rgb(255, 206, 206);
 }
 
-.nav__items--logout > a:hover .nav__icon {
+.nav__items--logout button:hover .nav__icon {
     color: rgb(255, 46, 46);
 }
 
-.nav__items--logout > a:hover .nav__icon-title {
+.nav__items--logout button:hover {
     color: rgb(255, 46, 46);
 }

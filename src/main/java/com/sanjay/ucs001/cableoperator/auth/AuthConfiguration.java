@@ -14,6 +14,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @RequiredArgsConstructor
 public class AuthConfiguration extends WebSecurityConfigurerAdapter {
 
+    private static final String LOGIN_URL = "/login";
+    
     private final SuccessHandler successHandler;
 
     @Bean
@@ -25,14 +27,16 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/login", "/register", "/customer/**", "/404").permitAll()
+                .antMatchers(LOGIN_URL, "/register", "/customer/**", "/404").permitAll()
                 .antMatchers("/css/**").permitAll()
                 .anyRequest().hasRole("OPERATOR")
                 .and()
                 .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl(LOGIN_URL)
                 .and()
                 .formLogin()
-                .loginPage("/login")
+                .loginPage(LOGIN_URL)
                 .successHandler(successHandler);
     }
 }

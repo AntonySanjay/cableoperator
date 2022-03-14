@@ -5,7 +5,7 @@
         </div>
         <div class="nav__items">
             <a th:href="@{/operator}">
-                <i class="fa-solid fa-chart-line"></i>
+                <i class="fa-solid fa-chart-line nav__icon"></i>
                 <p class="nav__icon-title">Dashboard</p>
             </a>
             <a th:href="@{/operator/customer}">
@@ -23,9 +23,11 @@
         </div>
     </div>
     <div class="nav__items nav__items--logout">
-        <a href="#">
-            <i class="fa-solid fa-arrow-right-from-bracket nav__icon"></i>
-            <p class="nav__icon-title">Logout</p>
-        </a>
+        <form method="post" th:action="@{/logout}">
+            <button class="nav__items" type="submit">
+                <i class="fa-solid fa-arrow-right-from-bracket nav__icon"></i>
+                Logout
+            </button>
+        </form>
     </div>
 </nav>
