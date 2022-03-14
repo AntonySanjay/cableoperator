@@ -41,7 +41,7 @@
             <td th:with="daysLeft=${utils.getDaysLeft(customer.planExpiresAt)}">
                 <p
                         class="customer_paid-tag"
-                        th:classappend="${daysLeft > 15 ? 'customer_paid-tag--paid' : ((daysLeft > 3) ? 'customer_paid-tag--due' : 'customer_paid-tag--not-paid' )}"
+                        th:classappend="${daysLeft > 15 ? 'customer_paid-tag--paid' : ((daysLeft > 7) ? 'customer_paid-tag--due' : 'customer_paid-tag--not-paid' )}"
                         th:text="
                         ${daysLeft} + ' ' +
                         ${daysLeft < 2 ? 'day left': 'days left'}

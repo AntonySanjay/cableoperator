@@ -3,7 +3,6 @@ package com.sanjay.ucs001.cableoperator.plan;
 import com.sanjay.ucs001.cableoperator.plan.dto.CreatePlanRequest;
 import com.sanjay.ucs001.cableoperator.plan.exception.PlanNotFoundException;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,7 +10,6 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
 public class PlanServiceImpl implements PlanService {
 
     private final PlanRepository planRepository;

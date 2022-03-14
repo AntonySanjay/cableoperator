@@ -62,6 +62,8 @@ public class CustomerServiceImpl implements CustomerService {
         this.customerRepository.save(customer);
     }
 
+    // FIXME: Improve this method
+    // currently when the user pays before the plan is finished the days available for the user is removed
     @Override
     public void increaseExpiryDateOneMonth(String subscriptionId) {
         Customer customer = this.customerRepository.findBySubscriptionId(subscriptionId)
