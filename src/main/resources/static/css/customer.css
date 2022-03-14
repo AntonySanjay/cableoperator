@@ -81,3 +81,24 @@
     color: var(--success);
     background-color: var(--success-light);
 }
+
+.customer__heading {
+    margin-bottom: 1rem;
+}
+
+.customer__heading > h1 {
+    font-size: 2.2rem;
+}
+
+.customer__add {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.2rem;
+}
+
+.customer__add > a {
+    max-width: 190px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}

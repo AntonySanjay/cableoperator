@@ -11,12 +11,15 @@
 
 <div class="content">
 
-    <div>
-        <h1>All customers</h1>
+    <div class="customer__heading">
+        <h1>Customers</h1>
     </div>
 
-    <div>
-        <a th:href="@{/operator/customer/add}">Add customer</a>
+    <div class="customer__add">
+        <a class="button" th:href="@{/operator/customer/add}">
+            <i class="fa-solid fa-plus"></i>
+            Add customer
+        </a>
     </div>
 
     <table class="customer__table">
