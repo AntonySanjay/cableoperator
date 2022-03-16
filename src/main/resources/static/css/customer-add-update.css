@@ -1,7 +1,3 @@
-.customer__add-content {
-    display: block;
-}
-
 .customer__add-heading > h1 {
     font-size: 2.2rem;
     margin-bottom: 20px;
@@ -11,4 +7,9 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+}
+
+.textarea {
+    min-width: 100%;
+    max-width: 100%;
 }

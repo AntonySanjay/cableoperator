@@ -57,8 +57,8 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void updateCustomer(Long id, CreateCustomer createCustomer) {
-        Customer customer = new Customer(createCustomer);
-        customer.setId(id);
+        Customer customer = this.findOneById(id).orElseThrow(() -> new CustomerNotFoundException("Customer Not found"));
+        customer.update(createCustomer);
         this.customerRepository.save(customer);
     }
 

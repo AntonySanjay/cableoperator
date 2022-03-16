@@ -11,4 +11,9 @@ public class CommonController {
         return "404";
     }
 
+    @GetMapping("/")
+    public String home() {
+        return "redirect:/customer";
+    }
+
 }

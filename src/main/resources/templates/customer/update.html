@@ -1,43 +1,159 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <div th:replace="fragments/head :: head"></div>
+    <link rel="stylesheet" th:href="@{/css/customer-add-update.css}"/>
+    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
     <title>Update Customer</title>
 </head>
 <body>
-<form method="post" style="display: flex; flex-direction: column"
-      th:action="@{/operator/customer/update/{id}(id=${id})}"
-      th:object="${customer}">
-    <label>firstName
-        <input id="firstName" th:field="*{firstName}" type="text">
-    </label>
-    <label>lastName
-        <input id="lastName" th:field="*{lastName}" type="text">
-    </label>
-    <label>subID
-        <input id="subscriptionId" readonly th:field="*{subscriptionId}" type="text">
-    </label>
-    <label>contactNumber
-        <input id="contactNumber" th:field="*{contactNumber}" type="text">
-    </label>
-    <label>contactAddress
-        <input id="contactAddress" th:field="*{contactAddress}" type="text">
-    </label>
-    <label>
-        Plan
-        <select th:field="*{plan}">
-            <option th:each="p : ${allPlans}" th:selected="${p.getId() == customer?.plan?.id}" th:text="${p.getName()}"
-                    th:value="${p.getId()}">Sample
-            </option>
-        </select>
-    </label>
-    <label>email
-        <input id="email" th:field="*{email}" type="text">
-    </label>
-    <button>Add User</button>
-</form>
 
-<a th:href="@{/operator/customer}">go back</a>
+<nav th:replace="fragments/nav :: nav"></nav>
+
+<div class="content">
+
+    <div class="customer__add-heading">
+        <h1>Update Customer</h1>
+    </div>
+
+    <form
+            class="customer__add-form"
+            id="form"
+            method="post"
+            th:action="@{/operator/customer/update/{id}(id=${id})}"
+            th:object="${customer}"
+    >
+        <div class="form-with-label">
+            <label for="firstName">First Name</label>
+            <input class="input" id="firstName" placeholder="John" th:field="*{firstName}"/>
+        </div>
+
+        <div class="form-with-label">
+            <label for="lastName">Last Name</label>
+            <input class="input" id="lastName" placeholder="Wick" th:field="*{lastName}"/>
+        </div>
+
+        <div class="form-with-label">
+            <label for="subId">Subscription ID</label>
+            <input class="input" id="subId" readonly th:field="*{subscriptionId}"/>
+        </div>
+
+        <div class="form-with-label">
+            <label for="contactNumber">Contact Number</label>
+            <input class="input" id="contactNumber" placeholder="XXX-XXX-XXXX" th:field="*{contactNumber}"/>
+        </div>
+
+        <div class="form-with-label">
+            <label for="contactAddress">Contact Address</label>
+            <textarea class="input textarea" id="contactAddress" placeholder="Enter your address" rows="10"
+                      th:field="*{contactAddress}"></textarea>
+        </div>
+
+        <div class="form-with-label">
+            <label for="email">Email</label>
+            <input class="input" id="email" placeholder="john.wick@gmail.com" th:field="*{email}"/>
+        </div>
+
+        <div class="form-with-label">
+            <label for="plan">Last Name</label>
+            <select class="input" id="plan" th:field="*{plan}">
+                <option
+                        th:each="p : ${allPlans}"
+                        th:selected="${p.id == customer.plan.id}"
+                        th:text="${p.name}"
+                        th:value="${p.id}"
+                >
+                    Plan Name
+                </option>
+            </select>
+        </div>
+
+        <button class="button">Update Customer</button>
+    </form>
+</div>
 
 </body>
+
+<script>
+    const validate = new JustValidate("#form", {
+        errorLabelCssClass: 'error-message',
+        errorFieldCssClass: 'input--is-danger'
+    });
+
+    validate
+        .addField(
+            '#firstName', [
+                {
+                    rule: 'required',
+                    value: true,
+                    errorMessage: 'First Name is required'
+                }
+            ]
+        )
+        .addField(
+            '#lastName', [
+                {
+                    rule: 'required',
+                    value: true,
+                    errorMessage: 'Last Name is required'
+                }
+            ]
+        )
+        .addField(
+            '#subId', [
+                {
+                    rule: 'required',
+                    value: true,
+                    errorMessage: 'Subscription id is required'
+                }
+            ]
+        )
+        .addField(
+            '#contactNumber', [
+                {
+                    rule: 'minLength',
+                    value: 10,
+                },
+                {
+                    rule: 'maxLength',
+                    value: 40
+                },
+                {
+                    rule: 'required',
+                    value: true,
+                    errorMessage: 'Contact number is required'
+                }
+            ]
+        )
+        .addField(
+            '#contactAddress', [
+                {
+                    rule: 'required',
+                    value: true,
+                    errorMessage: 'Contact Address is required'
+                }
+            ]
+        )
+        .addField('#plan', [
+            {
+                rule: 'required',
+                value: true,
+                errorMessage: 'Plan is required'
+            }
+        ])
+        .addField("#email", [
+            {
+                rule: 'required',
+                value: true,
+                errorMessage: 'Email is required'
+            },
+            {
+                rule: 'email',
+                errorMessage: 'Not a valid email'
+            }
+        ])
+        .onSuccess(e => {
+            e.currentTarget.submit()
+        })
+</script>
 </html>

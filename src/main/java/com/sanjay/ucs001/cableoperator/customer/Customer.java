@@ -59,6 +59,15 @@ public class Customer extends BaseEntity {
         this.plan = customer.getPlan();
     }
 
+    public void update(CreateCustomer customer) {
+        this.firstName = customer.getFirstName();
+        this.lastName = customer.getLastName();
+        this.subscriptionId = customer.getSubscriptionId();
+        this.contactAddress = customer.getContactAddress();
+        this.contactNumber = customer.getContactNumber();
+        this.email = customer.getEmail();
+        this.plan = customer.getPlan();
+    }
 
     @Override
     public boolean equals(Object o) {

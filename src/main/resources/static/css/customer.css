@@ -1,3 +1,8 @@
+.customer__content {
+    display: grid;
+    place-content: center;
+}
+
 .container {
     display: flex;
     justify-content: center;
