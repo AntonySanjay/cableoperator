@@ -36,12 +36,6 @@ public class PlanController {
         return "redirect:/operator/plan/";
     }
 
-    @GetMapping("/delete/{id}")
-    public String deletePlan(@PathVariable("id") Long id) {
-        this.planService.deletePlan(id);
-        return "redirect:/operator/plan";
-    }
-
     @GetMapping("/update/{id}")
     public String updatePlan(@PathVariable Long id, Model model) {
         Optional<Plan> plan = this.planService.findPlan(id);

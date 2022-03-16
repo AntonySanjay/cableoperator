@@ -13,7 +13,6 @@
 <div th:each="plan : ${plans}">
     <span>
     <h1 th:text="${plan.name}">Customer name</h1>
-    <a th:href="@{/operator/plan/delete/{id}(id=${plan.id})}">Delete Plan</a>
         <a th:href="@{/operator/plan/update/{id}(id=${plan.id})}">Update Plan</a>
     </span>
 </div>
