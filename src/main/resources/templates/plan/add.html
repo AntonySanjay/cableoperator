@@ -2,21 +2,69 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add plan</title>
+    <div th:replace="fragments/head :: head"></div>
+    <link rel="stylesheet" th:href="@{/css/plan-add-update.css}"/>
+    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
 </head>
 <body>
-<form method="post" style="display: flex; flex-direction: column" th:action="@{/operator/plan/add}"
-      th:object="${plan}">
-    <label>Name
-        <input id="firstName" th:field="*{name}" type="text">
-    </label>
-    <label>Price
-        <input th:field="*{planPrice}" type="number">
-    </label>
-    <label>Features
-        <input id="features" th:field="*{features}" type="text">
-    </label>
-    <button>Add User</button>
-</form>
+
+<nav th:replace="fragments/nav :: nav"></nav>
+
+
+<div class="content">
+
+    <div class="plan__add-heading">
+        <h1>Add Plan</h1>
+    </div>
+
+    <form autocomplete="off" class="plan__add-form" id="form" method="post" th:action="@{/operator/plan/add}"
+          th:object="${plan}">
+
+        <div class="form-with-label">
+            <label for="name">Name</label>
+            <input class="input" id="name" th:field="*{name}" type="text">
+        </div>
+
+        <div class="form-with-label">
+            <label for="planPrice">Price</label>
+            <input class="input" id="planPrice" th:field="*{planPrice}" type="number">
+        </div>
+
+        <div class="form-with-label">
+            <label for="features">Features</label>
+            <textarea class="input textarea" id="features" rows="10" th:field="*{features}"></textarea>
+        </div>
+        <button class="button">Add Plan</button>
+
+    </form>
+</div>
+
 </body>
+
+<script>
+    const validate = new window.JustValidate('#form', {
+        errorLabelCssClass: 'error-message',
+        errorFieldCssClass: 'input--is-danger'
+    })
+
+    validate
+        .addField('#name', [{
+            rule: 'required',
+            value: true,
+            errorMessage: 'Plan name is required'
+        }])
+        .addField('#planPrice', [{
+            rule: 'required',
+            value: true,
+            errorMessage: 'Plan price is required'
+        }])
+        .addField('#features', [{
+            rule: 'required',
+            value: true,
+            errorMessage: 'Atleast one feature is required'
+        }])
+        .onSuccess(e => e.currentTarget.submit())
+
+</script>
+
 </html>

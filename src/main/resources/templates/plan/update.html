@@ -2,24 +2,43 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Update Plan</title>
+    <div th:replace="fragments/head :: head"></div>
+    <link rel="stylesheet" th:href="@{/css/plan-add-update.css}"/>
+    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
 </head>
 <body>
-<form method="post" style="display: flex; flex-direction: column"
-      th:action="@{/operator/plan/update/{id}(id=${id})}"
-      th:object="${plan}">
-    <label>Name
-        <input id="firstName" th:field="*{name}" type="text">
-    </label>
-    <label>Price
-        <input id="price" th:field="*{price}" type="text">
-    </label>
-    <label>Features
-        <input id="features" th:field="*{features}" type="text">
-    </label>
-    <button>Update Plan</button>
-</form>
 
-<a th:href="@{/operator/plan}">go back</a>
+<nav th:replace="fragments/nav :: nav"></nav>
+
+
+<div class="content">
+
+    <div class="plan__add-heading">
+        <h1>Add Plan</h1>
+    </div>
+
+    <form autocomplete="off" class="plan__add-form" id="form" method="post"
+          th:action="@{/operator/plan/update/{id}(id=${id})}"
+          th:object="${plan}">
+
+        <div class="form-with-label">
+            <label for="name">Name</label>
+            <input class="input" id="name" th:field="*{name}" type="text">
+        </div>
+
+        <div class="form-with-label">
+            <label for="planPrice">Price</label>
+            <input class="input" id="planPrice" th:field="*{price}" type="number">
+        </div>
+
+        <div class="form-with-label">
+            <label for="features">Features</label>
+            <textarea class="input textarea" id="features" rows="10" th:field="*{features}"></textarea>
+        </div>
+        <button class="button">Update Plan</button>
+
+    </form>
+</div>
+
 </body>
 </html>
