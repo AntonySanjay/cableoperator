@@ -53,7 +53,7 @@ public class CustomerController {
     public String updateCustomer(@PathVariable Long id, Model model) {
         Optional<Customer> customer = this.customerService.findOneById(id);
         if (customer.isEmpty()) {
-            return "redirect:operator/customer";
+            return "redirect:/operator/customer";
         }
 
         model.addAttribute("customer", customer.get());
