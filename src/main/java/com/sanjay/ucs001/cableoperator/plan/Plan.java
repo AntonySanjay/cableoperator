@@ -27,7 +27,7 @@ public class Plan extends BaseEntity {
     private String name;
 
     @Column(nullable = false)
-    private int price;
+    private Long price;
 
     @Column(nullable = false)
     private String features;

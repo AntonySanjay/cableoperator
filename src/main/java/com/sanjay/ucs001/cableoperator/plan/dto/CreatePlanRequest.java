@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CreatePlanRequest {
     private String name;
-    private int planPrice;
+    private Long planPrice;
     private String features;
 }

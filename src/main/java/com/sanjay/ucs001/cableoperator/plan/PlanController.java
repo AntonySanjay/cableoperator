@@ -26,7 +26,7 @@ public class PlanController {
 
     @GetMapping("/add")
     public String addPlan(Model model) {
-        model.addAttribute("plan", new Plan());
+        model.addAttribute("plan", new CreatePlanRequest());
         return "plan/add";
     }
 
@@ -56,7 +56,7 @@ public class PlanController {
     }
 
     @PostMapping("/update/{id}")
-    public String updatePlan(@PathVariable("id") Long id, CreatePlanRequest plan) {
+    public String updatePlan(@PathVariable("id") Long id, Plan plan) {
         this.planService.updatePlan(id, plan);
         return "redirect:/operator/plan/update/" + id;
     }

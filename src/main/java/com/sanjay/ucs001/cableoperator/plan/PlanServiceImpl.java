@@ -38,9 +38,7 @@ public class PlanServiceImpl implements PlanService {
     }
 
     @Override
-    public void updatePlan(Long id, CreatePlanRequest createPlanRequest) {
-        Plan plan = new Plan(createPlanRequest);
-        plan.setId(id);
+    public void updatePlan(Long id, Plan plan) {
         this.planRepository.save(plan);
     }
 }
