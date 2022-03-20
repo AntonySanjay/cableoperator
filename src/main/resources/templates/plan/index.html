@@ -1,21 +1,56 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <div th:replace="fragments/head :: head"></div>
     <title>Plan</title>
+    <link rel="stylesheet" th:href="@{/css/table.css}"/>
+    <link rel="stylesheet" th:href="@{/css/plan.css}"/>
 </head>
 <body>
 
-<h1>
-    <a th:href="@{/operator/plan/add}">Create Plan</a>
-</h1>
+<nav th:replace="fragments/nav :: nav"></nav>
 
-<div th:each="plan : ${plans}">
-    <span>
-    <h1 th:text="${plan.name}">Customer name</h1>
-        <a th:href="@{/operator/plan/update/{id}(id=${plan.id})}">Update Plan</a>
-    </span>
+<div class="content">
+    <h1 class="plan__heading">
+        Plan
+    </h1>
+
+    <div class="plan__add">
+        <a class="button" th:href="@{/operator/plan/add}">
+            <i class="fa-solid fa-plus"></i>
+            Add Plan
+        </a>
+    </div>
+
+    <div class="plan__center">
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="table__heading">Name</th>
+                <th class="table__heading">Price</th>
+                <th class="table__heading">Features</th>
+                <th class="table__heading">Options</th>
+            </tr>
+            </thead>
+
+            <tbody class="table__body">
+            <tr th:each="plan : ${plans}">
+                <td th:text="${plan.name}">HD Plan</td>
+                <td th:text="|₹  ${plan.price}|">₹ 100</td>
+                <td th:utext="${plan.features.replaceAll(',', ',<br />')}"></td>
+                <td>
+                    <div class="table__options">
+                        <a th:href="@{'/operator/plan/update/' + ${plan.id}}">
+                            <i class="fa-solid fa-pencil plan__icon--pencil"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
+
 
 </body>
 </html>

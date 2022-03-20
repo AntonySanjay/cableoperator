@@ -3,6 +3,7 @@
 <head>
     <div th:replace="fragments/head :: head"></div>
     <link rel="stylesheet" th:href="@{/css/customer.css}"/>
+    <link rel="stylesheet" th:href="@{/css/table.css}"/>
     <title>Customers</title>
 </head>
 <body>
@@ -11,7 +12,7 @@
 
 <div class="content customer__content">
 
-    <div class="customer__heading">
+    <div class="table__heading">
         <h1>Customers</h1>
     </div>
 
@@ -22,20 +23,20 @@
         </a>
     </div>
 
-    <table class="customer__table">
+    <table class="table">
         <thead>
         <tr>
-            <th class="customer__heading">First Name</th>
-            <th class="customer__heading">Last Name</th>
-            <th class="customer__heading">Plan</th>
-            <th class="customer__heading">Subscription id</th>
-            <th class="customer__heading">Expiry Status</th>
-            <th class="customer__heading">contact number</th>
-            <th class="customer__heading">contact address</th>
-            <th class="customer__heading">options</th>
+            <th class="table__heading">First Name</th>
+            <th class="table__heading">Last Name</th>
+            <th class="table__heading">Plan</th>
+            <th class="table__heading">Subscription id</th>
+            <th class="table__heading">Expiry Status</th>
+            <th class="table__heading">contact number</th>
+            <th class="table__heading">contact address</th>
+            <th class="table__heading">options</th>
         </tr>
         </thead>
-        <tbody class="customer__body">
+        <tbody class="table__body">
         <tr th:each="customer: ${customers}">
             <td th:text="${customer.firstName}">Elon</td>
             <td th:text="${customer.lastName}">Musk</td>
@@ -56,7 +57,7 @@
             <td th:text="${customer.contactNumber}">99999999999</td>
             <td th:utext="${customer.contactAddress.replaceAll(',', ',<br />')}">asgsagd,sagdadgdsag,s</td>
             <td>
-                <div class="customer__options">
+                <div class="table__options">
                     <a th:href="@{'/operator/customer/update/' + ${customer.id}}">
                         <i class="fa-solid fa-pencil customer__icon--pencil"></i>
                     </a>
