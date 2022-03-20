@@ -1,0 +1,10 @@
+.plan__add-heading > h1 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.plan__add-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
