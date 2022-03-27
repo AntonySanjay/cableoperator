@@ -1,13 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>GetPlan</title>
+    <div th:replace="fragments/head :: head"></div>
+    <title>Customer</title>
+    <link rel="stylesheet" th:href="@{/css/customer-plan/home.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
 </head>
 <body>
-<form method="post" th:action="@{/customer/}">
-    <input name="id"/>
-    <button>Check</button>
+<form id="form" method="post" th:action="@{/customer/}">
+    <div class="form-with-label">
+        <label class="form__label" for="id">Enter your subscription ID</label>
+        <input class="input" id="id" name="id"/>
+    </div>
+    <button class="button">Log In</button>
 </form>
 </body>
+
+<script>
+    const validate = new window.JustValidate('#form', {
+        errorLabelCssClass: 'error-message',
+        errorFieldCssClass: 'input--is-danger'
+    })
+
+    validate
+        .addField('#id', [
+            {
+                rule: 'required',
+                value: true,
+                errorMessage: 'Subscription Id is required'
+            }
+        ])
+        .onSuccess(e => e.currentTarget.submit())
+
+</script>
+
 </html>
