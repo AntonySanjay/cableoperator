@@ -36,7 +36,7 @@
             <tbody class="table__body">
             <tr th:each="plan : ${plans}">
                 <td th:text="${plan.name}">HD Plan</td>
-                <td th:text="|₹  ${plan.price}|">₹ 100</td>
+                <td th:text="'₹' +  ${plan.price}">₹ 100</td>
                 <td th:utext="${plan.features.replaceAll(',', ',<br />')}"></td>
                 <td>
                     <div class="table__options">

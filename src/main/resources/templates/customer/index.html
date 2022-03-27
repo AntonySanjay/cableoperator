@@ -41,7 +41,7 @@
             <td th:text="${customer.firstName}">Elon</td>
             <td th:text="${customer.lastName}">Musk</td>
             <td th:text="${customer.plan.name}">SD plan</td>
-            <td th:text="${customer.contactNumber}">123123</td>
+            <td th:text="${customer.subscriptionId}">123123</td>
             <td th:with="daysLeft=${utils.getDaysLeft(customer.planExpiresAt)}">
                 <p
                         class="customer_paid-tag"
