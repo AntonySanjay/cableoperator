@@ -39,7 +39,9 @@ td,
 th,
 label,
 textarea,
-select {
+select,
+ul,
+li {
     font-family: "Montserrat", sans-serif;
     font-size: 1rem;
 }
@@ -57,11 +59,38 @@ a {
     padding: 0.5em 1em;
     border-radius: var(--rounded-sm);
     width: 100%;
+    transition: all 0.2s;
+
 }
 
 .button:hover {
     background-color: var(--success-hover);
 }
+
+.button-outline {
+    background-color: transparent;
+    border-color: var(--success);
+    color: var(--success);
+}
+
+.button-outline:hover {
+    background-color: var(--success);
+    color: #fff;
+    border-color: transparent;
+}
+
+.button-outline-info {
+    background-color: transparent;
+    border-color: var(--info);
+    color: var(--info);
+}
+
+.button-outline-info:hover {
+    background-color: var(--info);
+    color: #fff;
+    border-color: transparent;
+}
+
 
 .input {
     box-shadow: inset 0 0.0625em 0.125em rgb(10 10 10 / 5%);
@@ -105,4 +134,11 @@ a {
 .textarea {
     min-width: 100%;
     max-width: 100%;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

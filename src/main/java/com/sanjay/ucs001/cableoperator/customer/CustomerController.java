@@ -77,6 +77,7 @@ public class CustomerController {
             return "redirect:/404";
         }
         model.addAttribute("customer", customer.get());
+        model.addAttribute("utils", utils);
 
         return "customer/plan/detail";
     }

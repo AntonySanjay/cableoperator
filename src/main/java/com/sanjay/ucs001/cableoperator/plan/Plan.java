@@ -44,6 +44,13 @@ public class Plan extends BaseEntity {
         this.features = plan.getFeatures();
     }
 
+    public List<String> getFeatureList() {
+        if (this.features == null) {
+            return List.of();
+        }
+        return List.of(this.features.split(","));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

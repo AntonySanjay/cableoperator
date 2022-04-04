@@ -1,0 +1,45 @@
+.center {
+    position: absolute;
+}
+
+
+.detail__card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    padding: 32px;
+    border-radius: var(--rounded-sm);
+}
+
+.container {
+    padding: 2px 16px;
+}
+
+.detail__name {
+    font-size: 2rem;
+}
+
+.detail__plan {
+    padding: 20px 20px 0 0;
+}
+
+.detail__plan-name {
+    font-weight: bold;
+}
+
+.detail__plan-list > li {
+    margin-top: 4px;
+}
+
+.detail__links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    gap: 32px;
+}
+
+.detail__links > a {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}

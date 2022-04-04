@@ -69,6 +69,10 @@ public class Customer extends BaseEntity {
         this.plan = customer.getPlan();
     }
 
+    public String getFullName() {
+        return String.format("%s %s", this.firstName, this.lastName);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

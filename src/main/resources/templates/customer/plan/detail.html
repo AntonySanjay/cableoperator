@@ -1,19 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Customer Plan</title>
+    <div th:replace="fragments/head :: head"></div>
+    <link rel="stylesheet" th:href="@{/css/customer-plan/detail.css}"/>
+    <title th:text="|Welcome ${customer.getFullName()}|"></title>
 </head>
 <body>
 
-<h1 th:text="${customer.getFirstName()}"></h1>
+<main>
+    <div class="center detail__card">
+        <h3>Welcome,</h3>
+        <h1 class="detail__name" th:text="${customer.getFullName()}">Customer Name</h1>
 
-<span style="display: flex; gap: 1em">
-<h1>Expires At</h1>
-    <h1 th:text="${customer.planExpiresAt}">12/08/2001</h1>
-</span>
+        <div class="detail__plan">
+        <span>
+            You have currently subscribed to
+        <span class="detail__plan-name" th:text="${customer.plan.name}">Plan Name</span>
+            <br/>
+            <br/>
+        </span>
+            <span>Your plan expires at <span th:text="${customer.planExpiresAt}">12/12/12</span>. You have <span
+                    th:text="${utils.getDaysLeft(customer.planExpiresAt)}">12</span> days left</span>
+        </div>
 
-<a th:href="${'/customer/' + customer.subscriptionId + '/recharge'}">Recharge</a>
-<a th:href="${'/customer/' + customer.subscriptionId + '/help' }">Help</a>
+        <div class="detail__links">
+            <a class="button button-outline" th:href="${'/customer/' + customer.subscriptionId + '/recharge'}"
+               th:if="${utils.getDaysLeft(customer.planExpiresAt) < 12}">
+                <i class="fa-solid fa-money-bill"></i>
+                Recharge
+            </a>
+            <a class="button button-outline-info" th:href="${'/customer/' + customer.subscriptionId + '/help' }">
+                <i class="fa-solid fa-circle-question"></i>
+                Help
+            </a>
+        </div>
+
+    </div>
+</main>
 </body>
 </html>
