@@ -13,8 +13,20 @@
 .operator__card-container {
     display: flex;
     gap: 20px;
+    justify-content: space-around;
+    margin-top: 20px;
 }
 
 .detail__card {
     display: flex;
+}
+
+.operator__card-container > .card > h1 {
+    font-size: 2rem;
+}
+
+.operator__card-container > .card > .count {
+    text-align: center;
+    margin-top: 14px;
+    font-size: 1.4rem;
 }

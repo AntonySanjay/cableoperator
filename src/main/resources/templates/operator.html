@@ -11,7 +11,6 @@
 
 <div class="content operator__content">
 
-    <!--TODO: Implement after the idea is clear-->
     <div class="operator__heading">
         <h1>Analytics</h1>
     </div>
@@ -19,12 +18,12 @@
     <div class="operator__card-container">
         <div class="card">
             <h1>Customers</h1>
-            <p th:text="${customerCount}">2000</p>
+            <p class="count" th:text="${customerCount}">2000</p>
         </div>
 
         <div class="card">
             <h1>Tickets Open</h1>
-            <p th:text="${ticketCount}">2000</p>
+            <p class="count" th:text="${ticketCount}">2000</p>
         </div>
     </div>
 </div>
