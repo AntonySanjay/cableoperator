@@ -1,17 +1,69 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Recharge</title>
-</head>
+    <div th:replace="fragments/head :: head"></div>
+    <link rel="stylesheet" th:href="@{/css/customer-plan/recharge.css}"/>
+    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.7/dist/inputmask.min.js"></script>
+    <title>Recharge</title></head>
 <body>
 
-<form method="post" th:action="${'/customer/' + id + '/recharge'}" th:object="${model}">
-    <input placeholder="card number" th:field="*{cardNumber}" type="number"/>
-    <input placeholder="expiry date" type="date"/>
-    <input max="999" min="100" type="number"/>
-    <button>Recharge</button>
-</form>
+<div class="center card">
+    <form class="recharge__form" method="post" th:action="${'/customer/' + id + '/recharge'}" th:object="${model}">
+        <div class="form-with-label">
+            <label for="cardNumber">Card Number</label>
+            <input class="input" id="cardNumber" th:field="*{cardNumber}" type="text"/>
+        </div>
+
+        <div class="form-with-label">
+            <label for="expiryDate">Expiry Date</label>
+            <input class="input" id="expiryDate" placeholder="expiry date" type="date"/>
+        </div>
+
+        <div class="form-with-label">
+            <label for="CVV">CVV</label>
+            <input class="input" id="CVV" max="999" min="100" placeholder="123" type="number"/>
+        </div>
+        <button class="button">Recharge</button>
+    </form>
+</div>
+
 
 </body>
+<script>
+    const cardNumber = document.getElementById('cardNumber')
+
+    const maskerCard = new window.Inputmask("9999-9999-9999-9999", {
+        jitMasking: true,
+        removeMaskOnSubmit: true
+    })
+    maskerCard.mask(cardNumber)
+
+
+    const validate = new window.JustValidate('.recharge__form', {
+        errorLabelCssClass: 'error-message',
+        errorFieldCssClass: 'input--is-danger'
+    })
+
+    validate
+        .addField('#cardNumber', [{
+            rule: 'required',
+            value: true,
+            errorMessage: 'Card number is required'
+        }])
+        .addField('#expiryDate', [{
+            rule: 'required',
+            value: true,
+            errorMessage: 'Expiry date is required'
+        }])
+        .addField('#CVV', [{
+            rule: 'required',
+            value: true,
+            errorMessage: 'CVV is required'
+        }])
+        .onSuccess(e => {
+            e.currentTarget.submit()
+        })
+
+</script>
 </html>
