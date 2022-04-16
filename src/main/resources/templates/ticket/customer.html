@@ -1,17 +1,59 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Create Ticket</title>
+    <div th:replace="fragments/head :: head"></div>
+    <link rel="stylesheet" th:href="@{/css/ticket/customer.css}"/>
+    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
+    <title>Get Help</title>
 </head>
 <body>
 
-<form method="post" th:action="@{'/customer/' + ${userId} + '/help'}" th:object="${ticket}">
-    <input id="subscriptionId" name="subscriptionId" th:value="${userId}" type="hidden"/>
-    <input th:field="*{title}" type="text">
-    <input th:field="*{message}" type="text">
-    <button>Add ticket</button>
-</form>
+<div class="center">
+    <form id="form" method="post" th:action="@{'/customer/' + ${userId} + '/help'}" th:object="${ticket}">
+        <input id="subscriptionId" name="subscriptionId" th:value="${userId}" type="hidden"/>
+
+        <div class="form-with-label">
+            <label for="title">Title</label>
+            <input class="input" id="title" th:field="*{title}" type="text">
+        </div>
+
+        <div class="form-with-label">
+            <label for="message">Message</label>
+            <textarea class="input textarea" id="message" th:field="*{message}" rows="10"></textarea>
+        </div>
+        <button class="button">Add ticket</button>
+    </form>
+</div>
+
+<script>
+    const validate = new window.JustValidate("#form", {
+        errorLabelCssClass: 'error-message',
+        errorFieldCssClass: 'input--is-danger'
+    });
+
+    validate
+        .addField(
+            '#title', [
+                {
+                    rule: 'required',
+                    value: true,
+                    errorMessage: 'Title is required'
+                }
+            ]
+        )
+        .addField(
+            '#message', [
+                {
+                    rule: 'required',
+                    value: true,
+                    errorMessage: 'Message is required'
+                }
+            ]
+        )
+        .onSuccess(e => {
+            e.currentTarget.submit()
+        })
+</script>
 
 </body>
 </html>

@@ -41,7 +41,7 @@ public class TicketController {
 
         this.ticketService.createTicket(request);
 
-        return "redirect:/customer/" + id + "/help";
+        return "redirect:/customer/" + id;
     }
 
     @GetMapping("/operator/ticket")
