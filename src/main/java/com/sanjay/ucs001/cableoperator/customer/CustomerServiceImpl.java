@@ -1,5 +1,6 @@
 package com.sanjay.ucs001.cableoperator.customer;
 
+import com.sanjay.ucs001.cableoperator.common.Utils;
 import com.sanjay.ucs001.cableoperator.customer.dto.CreateCustomer;
 import com.sanjay.ucs001.cableoperator.customer.exceptions.CustomerNotFoundException;
 import com.sanjay.ucs001.cableoperator.plan.Plan;
@@ -20,6 +21,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
     private final PlanRepository planRepository;
+    private final Utils utils;
 
     @Override
     public List<Customer> findAllCustomers() {
@@ -62,13 +64,12 @@ public class CustomerServiceImpl implements CustomerService {
         this.customerRepository.save(customer);
     }
 
-    // FIXME: Improve this method
-    // currently when the user pays before the plan is finished the days available for the user is removed
     @Override
     public void increaseExpiryDateOneMonth(String subscriptionId) {
         Customer customer = this.customerRepository.findBySubscriptionId(subscriptionId)
                 .orElseThrow(() -> new CustomerNotFoundException("Customer with the given subscription ID not found"));
-        customer.setPlanExpiresAt(LocalDate.now().plusMonths(1));
+        Long remainingDays = utils.getDaysLeft(customer.getPlanExpiresAt());
+        customer.setPlanExpiresAt(LocalDate.now().plusMonths(1).plusDays(remainingDays));
         this.customerRepository.save(customer);
     }
 
