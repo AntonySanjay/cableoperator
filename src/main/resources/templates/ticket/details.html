@@ -1,15 +1,45 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <div th:replace="fragments/head :: head"></div>
+    <link rel="stylesheet" th:href="@{/css/ticket/detail.css}"/>
     <title th:text="${ticket.title}">Ticket Details</title>
 </head>
 <body>
 
-<h1 th:text="${ticket.title}">Ticket Title</h1>
-<p th:text="${ticket.message}">This is the message</p>
-<p th:text="${ticket.isOpen}">Status</p>
-<a th:href="@{'/operator/ticket/' + ${ticket.id} + '/done'}">Mark as done</a>
+<nav th:replace="fragments/nav :: nav"></nav>
+
+<div class="content">
+    <h1 class="ticket__title" th:text="${ticket.title}">Ticket Title</h1>
+    <div class="address">
+        <div class="address__container">
+            <div class="address__col">
+                <p class="head">Name: </p>
+                <p th:text="${customer.getFullName()}"></p>
+            </div>
+            <div class="address__col">
+                <p class="head">Contact number: </p>
+                <p th:text="${customer.contactNumber}"></p>
+            </div>
+            <div class="address__col">
+                <p class="head">Contact address: </p>
+                <p th:utext="${customer.contactAddress.replaceAll(',', ',<br />')}"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="ticket__message">
+        <p class="ticket__closed"
+           th:text="|This ticket has been closed at ${#dates.format(ticket.updatedAt, 'dd-MM-yyyy, hh:mm:ss ,E')}|"
+           th:if="${!ticket.isOpen}">This ticket has been closed</p>
+        <p class="ticket__message__text" th:utext="|${ticket.message}|">This is the message</p>
+        <a th:if="${ticket.isOpen}" class="button ticket__close__button"
+           th:href="@{'/operator/ticket/' + ${ticket.id} + '/done'}">
+            <i class="fa-solid fa-circle-check"></i>
+            Close ticket</a>
+    </div>
+
+</div>
 
 </body>
 </html>

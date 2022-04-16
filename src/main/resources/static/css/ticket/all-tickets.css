@@ -1,0 +1,72 @@
+.all__tickets {
+    max-width: 95%;
+    padding-top: 25px;
+    margin: 0 auto;
+}
+
+.ticket__card {
+    box-shadow: none;
+    border-style: solid;
+    border-color: #ddd;
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 22px;
+}
+
+.ticket__card__title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ticket_pill {
+    padding: 5px 8px;
+    border: 1px solid;
+    border-radius: var(--rounded-full);
+    font-size: 0.675rem;
+}
+
+.ticket_pill-open {
+    border-color: var(--success);
+    color: var(--success);
+    background-color: var(--success-light);
+}
+
+.ticket_pill-closed {
+    border-color: var(--danger);
+    color: var(--danger);
+    background-color: var(--danger-light);
+}
+
+.ticket__card__title > h1 {
+    font-size: 1.27rem;
+}
+
+.ticket__card:first-child {
+    border-top: 0;
+}
+
+.ticket__card:last-child {
+    border-bottom: 31px;
+}
+
+.ticket--content > h1 {
+    margin-bottom: 1rem;
+    font-size: 2.2rem;
+}
+
+.ticket__card__link {
+    max-width: fit-content;
+    max-height: 40px;
+    font-size: 1rem;
+}
+
+.ticket__creator {
+    font-size: 0.95rem;
+    margin-top: 10px;
+    color: #aaa
+}

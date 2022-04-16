@@ -15,6 +15,7 @@
     --error-light: #fcf1d4;
 
     --rounded-sm: 0.375rem;
+    --rounded-full: 500px;
 }
 
 * {
@@ -61,6 +62,10 @@ a {
     width: 100%;
     transition: all 0.2s;
 
+}
+
+.button-danger {
+    background-color: var(--danger);
 }
 
 .button:hover {

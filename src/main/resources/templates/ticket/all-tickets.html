@@ -1,13 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>All Tickets</title>
+    <div th:replace="fragments/head :: head"></div>
+    <link rel="stylesheet" th:href="@{/css/ticket/all-tickets.css}"/>
+    <title th:text="|${ticketCount} tickets open|"></title>
 </head>
 <body>
-<div th:each="ticket :${tickets}" th:object="${ticket}">
-    <h1 th:text="*{title}">Ticket title</h1>
-    <a th:href="@{'/operator/ticket/' + ${ticket.id}}">Open ticket</a>
+
+<nav th:replace="fragments/nav :: nav"></nav>
+
+<div class="content ticket--content">
+
+    <h1>
+        Tickets
+    </h1>
+
+    <div class="all__tickets">
+        <div class="card ticket__card" th:each="ticket :${tickets}" th:object="${ticket}">
+            <div>
+
+                <div class="ticket__card__title">
+                    <h1 th:text="*{title}">Ticket title</h1>
+                    <p
+                            th:class="${ticket.isOpen} ? 'ticket_pill ticket_pill-open': 'ticket_pill ticket_pill-closed'"
+                            th:text="|${ticket.isOpen ? 'open': 'closed'}|"></p>
+                </div>
+                <!--                This is bad but due less time and data this is permitted-->
+                <!--                n+1 query warning-->
+                <p class="ticket__creator"
+                   th:text="|id: ${ticket.subscriptionId}|"></p>
+            </div>
+            <a class="button button-outline-info ticket__card__link" th:href="@{'/operator/ticket/' + ${ticket.id}}">
+                <i class="fa-solid fa-up-right-from-square"></i>
+                Open
+            </a>
+        </div>
+    </div>
 </div>
 </body>
 </html>

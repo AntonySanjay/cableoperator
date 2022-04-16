@@ -47,6 +47,7 @@ public class TicketController {
     @GetMapping("/operator/ticket")
     public String getAllTickets(Model model) {
         model.addAttribute("tickets", this.ticketService.findAllTickets());
+        model.addAttribute("ticketCount", this.ticketService.openTicketCount());
 
         return "ticket/all-tickets";
     }
@@ -57,8 +58,19 @@ public class TicketController {
         if (ticket.isEmpty()) {
             return "redirect:/operator/ticket";
         }
+        Ticket currentTicket = ticket.get();
+        Customer customer = customerService.findBySubId(currentTicket.getSubscriptionId())
+                .orElseGet(
+                        () -> {
+                            Customer c = new Customer();
+                            c.setContactAddress(currentTicket.getContactAddress());
+                            c.setContactNumber(currentTicket.getContactNumber());
+                            return c;
+                        }
+                );
 
-        model.addAttribute("ticket", ticket.get());
+        model.addAttribute("ticket", currentTicket);
+        model.addAttribute("customer", customer);
 
         return "ticket/details";
     }

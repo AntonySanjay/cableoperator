@@ -1,0 +1,52 @@
+.ticket__title {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+}
+
+.address__from {
+    font-weight: bold;
+    margin-bottom: 9px;
+}
+
+.address__container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 2rem;
+}
+
+.address__col {
+    display: flex;
+    gap: 9px;
+}
+
+.address__col > .head {
+    font-weight: bold;
+}
+
+.ticket__message {
+    margin-top: 20px;
+}
+
+.ticket__message__text {
+    line-height: 24px;
+}
+
+.ticket__closed {
+    padding: 20px;
+    border: 1px solid var(--danger);
+    background-color: var(--danger-light);
+    color: var(--danger);
+    margin-bottom: 10px;
+}
+
+.ticket__close__button {
+    display: block;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.ticket__close__button > i::before {
+    margin-right: 5px;
+}
