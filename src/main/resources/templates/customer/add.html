@@ -55,7 +55,7 @@
         </div>
 
         <div class="form-with-label">
-            <label for="plan">Last Name</label>
+            <label for="plan">Plan</label>
             <select class="input" id="plan" th:field="*{plan}">
                 <option th:each="p : ${plan}" th:text="${p.name}" th:value="${p.id}">Plan Name</option>
             </select>
