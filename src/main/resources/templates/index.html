@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/head :: head"></div>
+    <link rel="stylesheet" th:href="@{/css/home-page.css}">
+    <title>Home</title>
+</head>
+<body>
+
+<div class="center container__home">
+    <a th:href="@{/customer}" class="button home__link">
+        <i class="fa-solid fa-user"></i>
+        Customer Login
+    </a>
+    <a th:href="@{/login}" class="button home__link">
+        <i class="fa-solid fa-user-tie"></i>
+        Operator Login
+    </a>
+</div>
+
+</body>
+</html>

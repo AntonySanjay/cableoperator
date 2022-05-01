@@ -13,7 +13,7 @@ public class CommonController {
 
     @GetMapping("/")
     public String home() {
-        return "redirect:/customer";
+        return "index";
     }
 
 }
